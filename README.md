@@ -6,21 +6,7 @@ Data is received on a fast RX clock, buffered through a **Gray-coded asynchronou
 ---
 
 ## Architecture Overview
-
-```
-                    RX Clock Domain                       TX Clock Domain
-               ┌───────────────────────┐            ┌───────────────────────┐
-  rx_in ──────►│       UART_RX         │            │       UART_TX         │──────► tx_out
-               │  ┌─────────────────┐  │            │  ┌─────────────────┐  │
-               │  │ RX_FSM          │  │  ┌──────┐  │  │ TX_FSM          │  │
-               │  │ data_sampling   │  │  │Async │  │  │ serializer      │  │
-               │  │ edge_bit_counter│  │  │FIFO  │  │  │ parity_calc     │  │
-               │  │ deserializer    │──┼─►│      │──┼─►│ TX_mux          │  │
-               │  │ parity_check    │  │  │ CDC  │  │  │                 │  │
-               │  │ start_check     │  │  │Bridge│  │  │                 │  │
-               │  │ stop_check      │  │  └──────┘  │  └─────────────────┘  │
-               └───────────────────────┘            └───────────────────────┘
-```
+<img width="2400" height="1792" alt="Gemini_Generated_Image_84yj0184yj0184yj" src="https://github.com/user-attachments/assets/3aea9e6e-a765-4d8d-987d-0bce5bcaadab" />
 
 The **system_top** module wires the three major IP blocks together:
 
