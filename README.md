@@ -198,10 +198,24 @@ Synthesis was performed using **Synopsys Design Compiler Ultra (O-2018.06-SP1)**
 source syn_script.tcl
 ```
 
-The script generates:
-- `system_top_netlist.v` — mapped gate-level netlist
-- `system_top_netlist_GTECH.v` — generic technology netlist
-- Area, timing, and power reports
+The script generates the following output files across multiple directories:
+- **Netlists**: `system_top.v` (mapped gate-level netlist)
+- **Reports**: `area.rpt`, `clocks.rpt`, `constraints.rpt`, `hold.rpt`, `power.rpt`, `setup.rpt`
+- **Constraints & Databases**: `system_top.sdc` (constraints), `system_top.sdf` (delays), `system_top.ddc` (compiled database)
+- **Formality**: `system_top.svf` (setup file)
+
+### Synthesis Results
+
+The system was synthesized successfully with all timing constraints met. The extracted metrics from the synthesis reports are as follows:
+
+| Metric | Value |
+|---|---|
+| **Total Cell Area** | `6762.49` |
+| **Combinational Area** | `3197.09` |
+| **Non-combinational Area** | `3565.40` |
+| **Total Power** | `0.251 mW` |
+| **Setup Timing (Max Delay)** | `MET` (RX Slack: `0.04 ns`, TX Slack: `8.62 ns`) |
+| **Hold Timing (Min Delay)** | `MET` (RX Slack: `0.61 ns`, TX Slack: `0.61 ns`) |
 
 ---
 
