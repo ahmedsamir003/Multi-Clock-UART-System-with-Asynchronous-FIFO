@@ -71,11 +71,22 @@ The **system_top** module wires the three major IP blocks together:
 │
 ├── Synthesis/                  # Synopsys Design Compiler output
 │   ├── syn/
-│   │   ├── syn_script.tcl      #   DC Ultra synthesis TCL script
-│   │   └── syn.log             #   Full synthesis session log
+│   │   └── syn_script.tcl      #   DC Ultra synthesis TCL script
 │   ├── Netlist/
-│   │   ├── system_top_netlist.v        #   Post-synthesis mapped netlist
-│   │   └── system_top_netlist_GTECH.v  #   Generic technology (GTECH) netlist
+│   │   └── system_top.v        #   Post-synthesis mapped netlist
+│   ├── Reports/                #   Synthesis reports (Area, Power, Timing)
+│   │   ├── area.rpt
+│   │   ├── clocks.rpt
+│   │   ├── constraints.rpt
+│   │   ├── hold.rpt
+│   │   ├── power.rpt
+│   │   └── setup.rpt
+│   ├── sdc & sdf & ddc/        #   Design constraints, delay format and design database
+│   │   ├── system_top.ddc
+│   │   ├── system_top.sdc
+│   │   └── system_top.sdf
+│   ├── svf/                    #   Formality setup files
+│   │   └── system_top.svf
 │   └── Snippets/               #   Design Vision schematic screenshots
 │
 ├── SpyGlass/                   # Synopsys SpyGlass lint & CDC reports
